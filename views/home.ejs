@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+        }
+        .container{
+
+            margin: 0 auto;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <h1 >URL Shortener</h1>
+    <% if (locals.shortId) { %>
+        <h2>Shortened URL: <a href="http://localhost:9999/url/<%= locals.shortId %>"><%= locals.shortId %></a></h2>
+    <% } %>
+    <div class="container">
+        <form method="POST" action="/url">
+            <label style="font-size: larger;">Enter your Url: &nbsp;</label>
+            <input type="text" name="url" placeholder="https://example.com"/>&nbsp;&nbsp;&nbsp;
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+    <div class="container">
+        <% if (locals.urls) { %>
+            <table class="container" border="2">
+                <thead>
+                    <tr>
+                        <th>S. No</th>
+                        <th>Original URL</th>
+                        <th>Shortened URL</th>
+                        <th>Clicks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= url.redirectUrl %></td>
+                            <td><a href="http://localhost:9999/url/<%= url.shortId %>">http://localhost:9999/url/<%= url.shortId %></a></td>
+                            <td><%= url.visitHistory.length %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>

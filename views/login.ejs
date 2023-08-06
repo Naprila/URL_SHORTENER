@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        body{
+            text-align: center;
+            margin: auto;
+            margin-top: 5%;
+        }
+        .item{
+            margin: 1%;
+        }
+        .button{
+            padding: 1% 3%;
+            background-color: rgb(49, 196, 88);
+            color: white;
+            margin-top: 2%;
+        }
+        
+        .button:hover{
+            background-color: rgb(67, 156, 112);
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/user/login">
+        <label >Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input class="item"type="email" required name="email"/><br>
+        <label >Password:&nbsp;</label>
+        <input class="item"type="password" required name="password"/><br>
+
+        <button class="button" type="submit">Login</button>
+    </form>
+</body>
+</html>
